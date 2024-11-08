@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba de Conexión</title>
+    <link rel="stylesheet" href="css/decoracion.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <h1>Bienvenido a la Prueba de Conexión</h1>
+    
+    <div>
+        <a th:href="@{/register}">Registro</a>
+        <a th:href="@{/login}">Inicio de Sesión</a>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <h2>Panel de Administración</h2>
+        <p>Bienvenido, Administrador.</p>
+        <a th:href="@{/admin}">Ir al Panel de Administración</a>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <h2>Panel de Usuario</h2>
+        <p>Bienvenido, Usuario.</p>
+        <a th:href="@{/user}">Ir al Panel de Usuario</a>
+    </div>
+</body>
+</html>
